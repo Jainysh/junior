@@ -16,6 +16,13 @@
   }
 }
 
+@font-face {
+  font-family: 'Satisfy-Regular';
+  src: url('/fonts/Satisfy-Regular.ttf') format('truetype'); /* Adjust the font file path and format based on your downloaded font */
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -24,4 +31,5 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    font-family: 'Satisfy-Regular';
 }

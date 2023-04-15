@@ -43,27 +43,27 @@ const CountdownTimer = ({ dueDate, message }: CountdownTimerProps) => {
   }, [dueDate]);
 
   return (
-    <div className="text-center bg-black rounded-lg p-2 shadow m-2">
+    <div style={{fontFamily: 'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'}} className="text-center bg-black rounded-lg p-2 shadow m-2">
       <h2 className="text-2xl font-bold mb-3">{message}</h2>
       <div className="flex justify-center items-center flex-wrap">
         <div className="bg-gray-200 text-gray-800 p-4 rounded-lg mx-2 mb-4">
-          <div className="text-4xl font-semibold">{months}</div>
+          <div className="text-4xl font-semibold">{months || '--'}</div>
           <div className="text-sm">Months</div>
         </div>
         <div className="bg-gray-200 text-gray-800 p-4 rounded-lg mx-2 mb-4">
-          <div className="text-4xl font-semibold">{days}</div>
+          <div className="text-4xl font-semibold">{days || '--'}</div>
           <div className="text-sm">Days</div>
         </div>
         <div className="bg-gray-200 text-gray-800 p-4 rounded-lg mx-2 mb-4">
-          <div className="text-4xl font-semibold">{hours}</div>
+          <div className="text-4xl font-semibold">{hours || '--'}</div>
           <div className="text-sm">Hours</div>
         </div>
         <div className="bg-gray-200 text-gray-800 p-4 rounded-lg mx-2 mb-4">
-          <div className="text-4xl font-semibold">{minutes}</div>
+          <div className="text-4xl font-semibold">{minutes || '--'}</div>
           <div className="text-sm">Minutes</div>
         </div>
         <div className="bg-gray-200 text-gray-800 p-4 rounded-lg mx-2 mb-4">
-          <div className="text-4xl font-semibold">{seconds}</div>
+          <div className="text-4xl font-semibold">{seconds || '--'}</div>
           <div className="text-sm">Seconds</div>
         </div>
       </div>

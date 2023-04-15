@@ -12,7 +12,7 @@ const HomePage = () => {
     <>
       <div className={styles.gradientBg}>
         <div className={styles.timerContainer}>
-          <CountdownTimer dueDate={dueDate} message="Awwwating!" />
+          <CountdownTimer dueDate={dueDate} message="Awwwaiting!" />
         </div>
         <div className={styles.container}>
           <div className={styles.greetingContainer}>

@@ -5,13 +5,13 @@
 }
 
 .gradientBg {
-  background: linear-gradient(to right, #f472b6, #a58ff9);
+  background: linear-gradient(to right, #f472b6, #1664b7);
   background-size: 200% 200%;
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
-  animation: animateGradient 7s ease infinite;
+  animation: animateGradient 4s ease infinite;
   display: flex;
   flex-direction: column;
   justify-content: center;
