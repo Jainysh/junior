@@ -1,0 +1,55 @@
+/* styles/Home.module.css */
+
+.container {
+  padding: 12px;
+}
+
+.gradientBg {
+  background: linear-gradient(to right, #f472b6, #a58ff9);
+  background-size: 200% 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  animation: animateGradient 7s ease infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+@keyframes animateGradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.timerContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.greetingContainer {
+  text-align: center;
+  z-index: 1;
+}
+
+.greetingText {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.subText {
+  font-size: 1.5rem;
+  color: #fff;
+}
