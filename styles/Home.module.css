@@ -12,10 +12,6 @@
   left: 0;
   z-index: -1;
   animation: animateGradient 4s ease infinite;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   min-height: 100vh;
 }
