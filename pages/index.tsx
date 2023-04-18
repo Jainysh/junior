@@ -32,7 +32,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <ScrollButton direction="down" />
+          <ScrollButton/>
         </div>
         <Milestones />
       </div>

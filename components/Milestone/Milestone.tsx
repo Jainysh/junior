@@ -58,7 +58,6 @@ const Milestones = () => {
           ))}
         </ul>
       </div>
-      <ScrollButton direction="up" textColor="text-gray-700"/>
     </section>
   );
 };
