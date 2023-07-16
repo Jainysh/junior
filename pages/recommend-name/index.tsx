@@ -1,5 +1,5 @@
 import { nameRecommendation } from "@/types/nameRecommendation";
-import { addRecommendations } from "../../firebase/service";
+import { addRecommendations, updateVoteCount } from "../../firebase/service";
 import {
   HandThumbDownIcon,
   HandThumbUpIcon,
@@ -78,28 +78,28 @@ const RecommendationsPage = () => {
     setGivenBy("");
   };
 
-  const handleVote = async (name: string, type: string) => {
+  const handleVote = async (name: string, voteCount: number) => {
     const updatedRecommendations = recommendations.map((rec) => {
       if (rec.name === name) {
         // Check if the user has already voted for this name
         const hasVoted = localStorage.getItem(name);
-        if (hasVoted) {
+        if (hasVoted || voteCount === 0) {
           return rec; // User has already voted, ignore the vote
         }
 
         // Increment or decrement the vote count based on the vote type
-        const count = type === "upvote" ? rec.voteCount + 1 : rec.voteCount - 1;
+        // const count = type === "upvote" ? rec.voteCount + 1 : rec.voteCount - 1;
 
         // Store the user's vote in localStorage to prevent multiple votes
         localStorage.setItem(name, "true");
-
-        return { ...rec, count };
+        updateVoteCount(name, voteCount);
+        return { ...rec, voteCount };
       }
       return rec;
     });
 
     // Update the recommendations state with the updated vote count
-    setRecommendations(updatedRecommendations);
+    // setRecommendations(updatedRecommendations);
   };
 
   return (
@@ -159,9 +159,9 @@ const RecommendationsPage = () => {
         Check my existing name recommendations and add your like/dislike
       </p>
       {recommendations.length === 0 && <p>No recommendations yet.</p>}
-      {recommendations.map((rec) => (
+      {recommendations.map((rec, index) => (
         <div
-          key={rec.name}
+          key={index}
           className="flex bg-pink-100 px-4 py-2 mb-1 rounded text-pink-700 items-center justify-between"
         >
           <p>
@@ -169,13 +169,13 @@ const RecommendationsPage = () => {
           </p>
           <div>
             <button
-              onClick={() => handleVote(rec.name, "upvote")}
+              onClick={() => handleVote(rec.name, rec.voteCount + 1)}
               className="text-green-500 hover:text-green-600 mr-2"
             >
               <HandThumbUpIcon className="w-6 h-6" />
             </button>
             <button
-              onClick={() => handleVote(rec.name, "downvote")}
+              onClick={() => handleVote(rec.name, rec.voteCount - 1)}
               className="text-red-500 hover:text-red-600"
             >
               <HandThumbDownIcon className="w-6 h-6" />
