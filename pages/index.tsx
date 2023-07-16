@@ -33,7 +33,7 @@ const HomePage = () => {
           </div>
         </div>
         <a
-          href="recommend-a-name"
+          href="recommend-name"
           className={`mb-4 z-50 border-slate-300 border hover:bg-slate-400 rounded-full text-center text-lg px-4 py-1`}
         >
           Recommend me a name
