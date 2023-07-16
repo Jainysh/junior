@@ -23,7 +23,7 @@ const HomePage = () => {
                 Welcome to my Website.
               </h2>
               <h2 className="text-lg">Baby to the excited parents: <br/>Akshitha and Yash</h2>
-              <div className={styles.timerContainer}>
+              <div className={`mt-4 ${styles.timerContainer}`}>
                 <CountdownTimer dueDate={dueDate} message="I am growing!" />
               </div>
               {/* <p className={styles.subText}>

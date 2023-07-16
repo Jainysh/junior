@@ -1,22 +1,37 @@
 import { nameRecommendation } from "@/types/nameRecommendation";
-import { addRecommendations, getRecommendations } from "../../firebase/service";
-import { HandThumbDownIcon, HandThumbUpIcon, HomeIcon } from "@heroicons/react/24/solid";
+import { addRecommendations } from "../../firebase/service";
+import {
+  HandThumbDownIcon,
+  HandThumbUpIcon,
+  HomeIcon,
+} from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { useState, useEffect, SetStateAction } from "react";
+import { getFirebaseFirestoreDB } from "@/firebase";
+import { collection, onSnapshot, query, where } from "firebase/firestore";
 
 const RecommendationsPage = () => {
   const [name, setName] = useState("");
   const [givenBy, setGivenBy] = useState("");
-  const [recommendations, setRecommendations] = useState<
-    nameRecommendation[]
-  >([]);
+  const [recommendations, setRecommendations] = useState<nameRecommendation[]>(
+    []
+  );
 
   useEffect(() => {
-    // Fetch existing recommendations from Firebase
     const fetchRecommendations = async () => {
-      // const snapshot = await firebase.database().ref('recommendations').once('value');
-      const data = await getRecommendations();
-      setRecommendations(data);
+      const db = await getFirebaseFirestoreDB();
+      const q = query(
+        collection(db, "yakshu-app/nameRecommendation/names"),
+        where("voteCount", ">", 0)
+      );
+
+      onSnapshot(q, (querySnapshot) => {
+        const nameData = querySnapshot.docs.map((doc) =>
+          doc.data()
+        ) as nameRecommendation[];
+        nameData.sort((a, b) => b.voteCount - a.voteCount);
+        setRecommendations(nameData);
+      });
     };
 
     fetchRecommendations();
@@ -40,30 +55,30 @@ const RecommendationsPage = () => {
     event.preventDefault();
 
     // Check if the name has already been recommended
-    const existingName = recommendations.find((rec) => rec.name === name);
-    if (existingName) {
-      // Increment the number if the name has been recommended multiple times
-      const newName = `${name} ${existingName.voteCount + 1}`;
-      setName(newName);
-    }
+    // const existingName = recommendations.find((rec) => rec.name === name);
+    // if (existingName) {
+    //   // Increment the number if the name has been recommended multiple times
+    //   const newName = `${name} ${existingName.voteCount + 1}`;
+    //   setName(newName);
+    // }
 
-   const response =  await addRecommendations(name, givenBy || "")
-    console.log("response in ducntion", response)
+    const response = await addRecommendations(name, givenBy || "");
+    console.log("response in ducntion", response);
     // Store the recommendation in Firebase
     // firebase.database().ref('recommendations').push({ name, count: 0 });
 
     // Update the recommendations state with the new recommendation
-    setRecommendations((prevRecommendations) => [
-      ...prevRecommendations,
-      { name, voteCount: 0, givenBy: '' },
-    ]);
+    // setRecommendations((prevRecommendations) => [
+    //   ...prevRecommendations,
+    //   { name, voteCount: 0, givenBy: "" },
+    // ]);
 
     // Clear the input field
     setName("");
     setGivenBy("");
   };
 
-  const handleVote =async  (name: string, type: string) => {
+  const handleVote = async (name: string, type: string) => {
     const updatedRecommendations = recommendations.map((rec) => {
       if (rec.name === name) {
         // Check if the user has already voted for this name
@@ -93,9 +108,11 @@ const RecommendationsPage = () => {
         {/* <button> */}
 
         <Link href="/">
-          <div className="flex">
-            <HomeIcon className="w-6 h-6" />{" "}
-            <span className="ml-2">Go Back</span>
+          <div className="flex justify-end">
+            <div className="flex border rounded-md p-2 self-end">
+              <HomeIcon className="w-6 h-6" />{" "}
+              <span className="ml-2">See my home</span>
+            </div>
           </div>
         </Link>
         {/* </button> */}
@@ -105,13 +122,10 @@ const RecommendationsPage = () => {
         <h1 className="text-2xl  mb-4">
           Please recommend me a good baby girl name that starts with{" "}
           <span style={{ fontFamily: "sans-serif" }}>A, C </span>or{" "}
-          <span style={{ fontFamily: "sans-serif" }}>L</span>
+          <span style={{ fontFamily: "sans-serif" }}>L</span> (अ, च or ल)
         </h1>
 
-        <form
-          onSubmit={handleRecommendationSubmit}
-          className="mb-4"
-        >
+        <form onSubmit={handleRecommendationSubmit} className="mb-4">
           <label className="">
             {/* <span className="block mb-1">Enter name:</span> */}
             <input
@@ -141,10 +155,15 @@ const RecommendationsPage = () => {
         </form>
       </div>
 
-      <p className="text-xl mt-6 mb-2">Check my existing name recommendations and add your like/dislike</p>
+      <p className="text-xl mt-6 mb-2">
+        Check my existing name recommendations and add your like/dislike
+      </p>
       {recommendations.length === 0 && <p>No recommendations yet.</p>}
       {recommendations.map((rec) => (
-        <div key={rec.name} className="flex bg-pink-100 px-4 py-2 mb-1 rounded text-pink-700 items-center justify-between">
+        <div
+          key={rec.name}
+          className="flex bg-pink-100 px-4 py-2 mb-1 rounded text-pink-700 items-center justify-between"
+        >
           <p>
             {rec.name} - Votes: {rec.voteCount}
           </p>
@@ -153,13 +172,13 @@ const RecommendationsPage = () => {
               onClick={() => handleVote(rec.name, "upvote")}
               className="text-green-500 hover:text-green-600 mr-2"
             >
-              <HandThumbUpIcon className="w-6 h-6"/>
+              <HandThumbUpIcon className="w-6 h-6" />
             </button>
             <button
               onClick={() => handleVote(rec.name, "downvote")}
               className="text-red-500 hover:text-red-600"
             >
-              <HandThumbDownIcon className="w-6 h-6"/>
+              <HandThumbDownIcon className="w-6 h-6" />
             </button>
           </div>
         </div>

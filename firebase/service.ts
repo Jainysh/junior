@@ -9,20 +9,20 @@ import {
 import { getFirebaseFirestoreDB } from ".";
 import { nameRecommendation } from "@/types/nameRecommendation";
 
-export const getRecommendations = async () => {
-  const db = await getFirebaseFirestoreDB();
-  const q = query(collection(db, "yakshu-app/nameRecommendation/names"));
-  const querySnapShot = await getDocs(q);
-  if (querySnapShot.empty) {
-    console.log("empty response");
-    return [] as nameRecommendation[];
-  }
-  const nameRecommendations = querySnapShot.docs.map((doc) =>
-    doc.data()
-  ) as nameRecommendation[];
-  console.log("response", nameRecommendations);
-  return nameRecommendations;
-};
+// export const getRecommendations = async () => {
+//   const db = await getFirebaseFirestoreDB();
+//   const q = query(collection(db, "yakshu-app/nameRecommendation/names"));
+//   const querySnapShot = await getDocs(q);
+//   if (querySnapShot.empty) {
+//     console.log("empty response");
+//     return [] as nameRecommendation[];
+//   }
+//   const nameRecommendations = querySnapShot.docs.map((doc) =>
+//     doc.data()
+//   ) as nameRecommendation[];
+//   console.log("response", nameRecommendations);
+//   return nameRecommendations;
+// };
 
 export const addRecommendations = async (name: string, givenBy: string) => {
   const db = await getFirebaseFirestoreDB();
@@ -50,3 +50,7 @@ export const addRecommendations = async (name: string, givenBy: string) => {
     return {isSuccess: true, message: "Your recommendation already exists, we have increased the likes of your suggested name "}
   }
 };
+
+export const updateVoteCount = async (name: string, voteCount: number ) => {
+  
+}

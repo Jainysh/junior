@@ -15,6 +15,7 @@ export default function Document() {
 							);`,
           }}
         />
+        <title>Princess&apos; Personal Page</title>
       </Head>
       <body>
         <Main />
