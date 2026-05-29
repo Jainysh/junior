@@ -15,7 +15,10 @@ export default function Document() {
 							);`,
           }}
         />
-        <title>Princess&apos; Personal Page</title>
+        <title>Our Baby&apos;s Personal Page</title>
+        <meta property="og:title" content="Our Baby's Personal Page" />
+        <meta property="og:description" content="Suggest and vote for baby names for our little one!" />
+        <meta property="og:type" content="website" />
       </Head>
       <body>
         <Main />

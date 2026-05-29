@@ -9,7 +9,6 @@ import {
 import type { nameRecommendation } from "@/types/nameRecommendation";
 import styles from "../../styles/NameSuggestion.module.css";
 
-const ALLOWED_STARTS = ["द", "च"];
 const LS_PREFIX = "boy-vote-";
 
 const NameSuggestionPage = () => {
@@ -44,21 +43,10 @@ const NameSuggestionPage = () => {
     return unsubscribe;
   }, []);
 
-  const validateName = (input: string): string => {
-    const trimmed = input.trim();
-    if (!trimmed) return "Please enter a name";
-    const firstChar = Array.from(trimmed)[0];
-    if (!ALLOWED_STARTS.includes(firstChar)) {
-      return `Name must start with ${ALLOWED_STARTS.join(" or ")}`;
-    }
-    return "";
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const validationErr = validateName(name);
-    if (validationErr) {
-      setError(validationErr);
+    if (!name.trim()) {
+      setError("Please enter a name");
       return;
     }
     setError("");
@@ -126,8 +114,8 @@ const NameSuggestionPage = () => {
 
       {/* Hero Header */}
       <header className={styles.header}>
-        <div className={styles.babyEmoji}>👶</div>
-        <h1 className={styles.title}>Name My Baby Boy</h1>
+        <div className={styles.babyEmoji}>👶🏻</div>
+        <h1 className={styles.title}>Name our Baby Boy</h1>
         <p className={styles.subtitle}>
           Suggest or vote for names starting with{" "}
           <span className={styles.allowedLetters}>द</span> or{" "}
@@ -147,7 +135,7 @@ const NameSuggestionPage = () => {
                 setName(e.target.value);
                 setError("");
               }}
-              placeholder="Baby's name — must start with द or च"
+              placeholder="Baby's name (starting with द or च)"
               className={styles.input}
               dir="auto"
               autoComplete="off"

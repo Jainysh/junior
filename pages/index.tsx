@@ -1,14 +1,23 @@
 // pages/index.js
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import CountdownTimer from "@/components/Countdown/countdown";
 import Milestones from "@/components/Milestone/Milestone";
 import ScrollButton from "@/components/ScrollButton/ScrollButton";
 
+const DAUGHTER_DATE = new Date("July 11, 2023 04:37:00");
+const SON_DATE = new Date("2026-05-14T10:58:00");
+
 const HomePage = () => {
-  // Define your due date here
-  const dueDate = new Date("July 11, 2023 04:37:00");
+  const [dueDate, setDueDate] = useState(DAUGHTER_DATE);
+
+  useEffect(() => {
+    const subdomain = window.location.hostname.split(".")[0];
+    if (subdomain === "junior") {
+      setDueDate(SON_DATE);
+    }
+  }, []);
 
   return (
     <>
@@ -48,7 +57,7 @@ const HomePage = () => {
             textDecoration: "none",
           }}
         >
-          Name My Baby Boy 👶
+          Name our Baby Boy 👶🏻
         </a>
         {/* <ScrollButton/> */}
       </div>
