@@ -15,9 +15,9 @@ export default function Document() {
 							);`,
           }}
         />
-        <title>Our Baby&apos;s Personal Page</title>
-        <meta property="og:title" content="Our Baby's Personal Page" />
-        <meta property="og:description" content="Suggest and vote for baby names for our little one!" />
+        <title>Welcome to Darsh&apos;s Garage</title>
+        <meta property="og:title" content="Welcome to Darsh's Garage" />
+        <meta property="og:description" content="Suggest and vote for baby names, and watch the countdown to our little engineer's arrival!" />
         <meta property="og:type" content="website" />
       </Head>
       <body>

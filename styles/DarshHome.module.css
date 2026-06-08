@@ -1,0 +1,310 @@
+/* =====================
+   CSS Variables
+   ===================== */
+.wrapper {
+  --bg: #d6e4f5;
+  --shadow-dark: rgba(166, 192, 220, 0.75);
+  --shadow-light: rgba(255, 255, 255, 0.92);
+  --text-primary: #1a365d;
+  --text-secondary: #4a7ab5;
+  --accent: #3b82f6;
+  --gear-fill: #8ab0cc;
+  --gear-fill-2: #7a9fbe;
+  --gear-fill-3: #9db5c8;
+  --gear-hole: #d6e4f5;
+  --gear-pin: #5a8aaa;
+
+  background: var(--bg);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Satisfy-Regular", sans-serif;
+  /* covers gradient from _app.tsx */
+  z-index: 0;
+}
+
+/* =====================
+   SVG Gear Fill Classes
+   ===================== */
+.gearFill { fill: var(--gear-fill); }
+.gearHole { fill: var(--gear-hole); }
+.gearPin  { fill: var(--gear-pin);  }
+
+/* =====================
+   Background Gears Layer
+   ===================== */
+.bgLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bgGear {
+  position: absolute;
+  opacity: 0.18;
+  filter: drop-shadow(3px 3px 6px rgba(166, 192, 220, 0.7))
+          drop-shadow(-3px -3px 6px rgba(255, 255, 255, 0.8));
+}
+
+/* Positions & speeds — bg gears form two meshing pairs */
+.bgG1 {
+  top: -70px;
+  left: -70px;
+  animation: cwSpin 28s linear infinite;
+}
+.bgG2 {
+  /* meshes with bgG1: (200*0.88/2)+(140*0.88/2) = 88+61.6=149.6 center-to-center */
+  top: -20px;
+  left: 90px;
+  animation: ccwSpin 20s linear infinite; /* 28 * 9/13 ≈ 19.4 → ~20s */
+}
+.bgG3 {
+  bottom: -60px;
+  right: -60px;
+  animation: cwSpin 24s linear infinite;
+}
+.bgG4 {
+  /* meshes with bgG3 */
+  bottom: 40px;
+  right: 120px;
+  animation: ccwSpin 16s linear infinite;
+}
+
+@keyframes cwSpin  { to { transform: rotate( 360deg); } }
+@keyframes ccwSpin { to { transform: rotate(-360deg); } }
+
+/* =====================
+   Floating Tech Items
+   ===================== */
+.floatLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floater {
+  position: absolute;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  animation: floatBob ease-in-out infinite;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.12));
+}
+
+/* 1=💻 2=🔧 3=🧰 4=🤖 5=📐 6=🔩 */
+.fl1 { top: 10%; right: 5%;  animation-duration: 5.2s; animation-delay: 0s;   }
+.fl2 { top: 52%; right: 3%;  animation-duration: 7.1s; animation-delay: 1.4s; }
+.fl3 { bottom: 10%; left: 3%; animation-duration: 6.3s; animation-delay: 0.7s; }
+.fl4 { top: 16%; left: 5%;   animation-duration: 4.8s; animation-delay: 2.0s; }
+.fl5 { bottom: 22%; right: 8%; animation-duration:5.9s; animation-delay: 1.8s; }
+.fl6 { top: 42%; left: 2%;   animation-duration: 6.7s; animation-delay: 0.4s; }
+
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0)     rotate(-5deg); }
+  50%       { transform: translateY(-14px) rotate( 5deg); }
+}
+
+/* =====================
+   Content Card
+   ===================== */
+.contentCard {
+  background: var(--bg);
+  border-radius: 28px;
+  padding: clamp(22px, 5vw, 40px) clamp(18px, 5vw, 44px);
+  box-shadow: 14px 14px 28px var(--shadow-dark),
+    -14px -14px 28px var(--shadow-light);
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  max-width: 520px;
+  width: calc(100% - 40px);
+  animation: cardIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(32px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+.babyBadge {
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  display: inline-block;
+  margin-bottom: 10px;
+  animation: babyBounce 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 4px 10px rgba(59, 130, 246, 0.28));
+}
+
+@keyframes babyBounce {
+  0%, 100% { transform: translateY(0)     rotate(-4deg) scale(1);    }
+  40%       { transform: translateY(-12px) rotate( 4deg) scale(1.06); }
+  60%       { transform: translateY(-8px)  rotate( 2deg) scale(1.03); }
+}
+
+.title {
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  color: var(--text-primary);
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 6px;
+  text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.85),
+    -1px -1px 3px rgba(166, 192, 220, 0.6);
+}
+
+.subtitle {
+  font-size: clamp(0.82rem, 2.2vw, 0.98rem);
+  color: var(--text-secondary);
+  font-family: sans-serif;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+/* =====================
+   Machine Card (inset neo)
+   ===================== */
+.machineCard {
+  background: var(--bg);
+  border-radius: 20px;
+  padding: 18px 12px 18px;
+  box-shadow: inset 5px 5px 12px var(--shadow-dark),
+    inset -5px -5px 12px var(--shadow-light);
+}
+
+/* =====================
+   Machine Gear Row
+   ===================== */
+.gearRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* overflow visible so gears can overlap */
+}
+
+/* Individual machine gears — transform-origin:center so rotation is around gear center */
+.mg {
+  flex-shrink: 0;
+  transform-origin: center;
+  filter: drop-shadow(2px 2px 4px rgba(166, 192, 220, 0.6))
+          drop-shadow(-2px -2px 4px rgba(255, 255, 255, 0.8));
+}
+
+/* Gear 1 (largest, 72px, 9 teeth): clockwise, 9 s */
+.mg1 { animation: cwSpin 9s linear infinite; }
+
+/* Gear 2 (52px, 7 teeth): counter-clockwise.
+   ω2 = ω1 × T1/T2 = (1/9) × (9/7) → period = 7s */
+.mg2 {
+  animation: ccwSpin 7s linear infinite;
+  margin-left: -7px; /* meshing overlap: R1+R2 = 31.7+22.9 = 54.6 */
+}
+
+/* Gear 3 (38px, 5 teeth): clockwise.
+   ω3 = ω2 × T2/T3 = (1/7) × (7/5) → period = 5s */
+.mg3 {
+  animation: cwSpin 5s linear infinite;
+  margin-left: -5px; /* meshing overlap: R2+R3 = 22.9+16.7 = 39.6 */
+}
+
+/* =====================
+   Output Shaft (gears → timer)
+   ===================== */
+.shaft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 6px auto 8px;
+  gap: 0;
+}
+
+.shaftLine {
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(to bottom, var(--gear-fill), var(--gear-pin));
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px var(--shadow-dark), -1px -1px 3px var(--shadow-light);
+  /* Pulses in sync with gear rotation feel */
+  animation: shaftPulse 5s linear infinite;
+}
+
+@keyframes shaftPulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1;   }
+}
+
+.shaftArrow {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 9px solid var(--gear-pin);
+  opacity: 0.75;
+}
+
+/* =====================
+   Neumorphic Timer Display
+   ===================== */
+.timerDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.timerBox {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 10px 10px 8px;
+  min-width: 50px;
+  box-shadow: 4px 4px 9px var(--shadow-dark), -4px -4px 9px var(--shadow-light);
+  /* Animation fires on mount (triggered by key change on seconds box) */
+  animation: tickIn 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes tickIn {
+  from {
+    box-shadow: inset 3px 3px 7px var(--shadow-dark),
+      inset -3px -3px 7px var(--shadow-light);
+    transform: scale(0.93);
+  }
+  to {
+    box-shadow: 4px 4px 9px var(--shadow-dark), -4px -4px 9px var(--shadow-light);
+    transform: scale(1);
+  }
+}
+
+.timerVal {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  font-family: sans-serif;
+}
+
+.timerLabel {
+  font-size: 0.62rem;
+  color: var(--text-secondary);
+  font-family: sans-serif;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* =====================
+   Responsive
+   ===================== */
+@media (max-width: 480px) {
+  .contentCard {
+    border-radius: 20px;
+  }
+  .floater {
+    font-size: 1.5rem;
+  }
+  .bgGear {
+    opacity: 0.1;
+  }
+  .timerBox {
+    min-width: 42px;
+    padding: 8px 7px 6px;
+  }
+}
