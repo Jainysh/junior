@@ -2,16 +2,18 @@
    Theme variables
    ===================== */
 .wrapper {
-  --cream: #fff7ec;
-  --peach: #ffe3c8;
-  --rose: #ffd9e0;
-  --sky: #d9ecff;
-  --gold: #f6a623;
-  --coral: #ff8c6b;
-  --plum: #6b4f8f;
-  --ink: #4a3a5e;
-  --ink-soft: #7d6a96;
-  --card: rgba(255, 255, 255, 0.72);
+  --night-1: #171036;
+  --night-2: #2b1a52;
+  --night-3: #3a1f63;
+  --night-4: #1b1f52;
+  --gold: #f3c75f;
+  --gold-deep: #d99a2b;
+  --rose-gold: #f0a47e;
+  --peacock: #2fc4ae;
+  --ivory: #f7efdb;
+  --lavender: #cfc4e8;
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --card-border: rgba(243, 199, 95, 0.4);
 
   position: relative;
   min-height: 100vh;
@@ -20,19 +22,19 @@
   align-items: center;
   justify-content: center;
   padding: clamp(24px, 5vw, 56px) 16px;
-  color: var(--ink);
+  color: var(--ivory);
   font-family: sans-serif;
 
-  background: linear-gradient(130deg, var(--cream), var(--peach), var(--rose), var(--sky), var(--cream));
-  background-size: 320% 320%;
-  animation: gradientDrift 18s ease-in-out infinite;
+  background: linear-gradient(135deg, var(--night-1), var(--night-2), var(--night-3), var(--night-4));
+  background-size: 300% 300%;
+  animation: gradientDrift 20s ease-in-out infinite;
   /* covers gradient from _app.tsx */
   z-index: 0;
 }
 
 @keyframes gradientDrift {
-  0%, 100% { background-position: 0% 35%; }
-  50%      { background-position: 100% 65%; }
+  0%, 100% { background-position: 0% 40%; }
+  50%      { background-position: 100% 60%; }
 }
 
 /* =====================
@@ -47,41 +49,41 @@
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.55;
+  filter: blur(70px);
+  opacity: 0.4;
 }
 
 .blob1 {
   width: 380px;
   height: 380px;
-  top: -120px;
-  left: -100px;
-  background: radial-gradient(circle, #ffd9a0, transparent 70%);
-  animation: blobDrift 14s ease-in-out infinite;
+  top: -130px;
+  left: -110px;
+  background: radial-gradient(circle, rgba(243, 199, 95, 0.55), transparent 70%);
+  animation: blobDrift 15s ease-in-out infinite;
 }
 
 .blob2 {
-  width: 320px;
-  height: 320px;
-  bottom: -100px;
-  right: -80px;
-  background: radial-gradient(circle, #ffc3d4, transparent 70%);
-  animation: blobDrift 17s ease-in-out infinite reverse;
+  width: 340px;
+  height: 340px;
+  bottom: -110px;
+  right: -90px;
+  background: radial-gradient(circle, rgba(47, 196, 174, 0.45), transparent 70%);
+  animation: blobDrift 18s ease-in-out infinite reverse;
 }
 
 .blob3 {
-  width: 260px;
-  height: 260px;
-  top: 40%;
-  left: 60%;
-  background: radial-gradient(circle, #c5e3ff, transparent 70%);
-  animation: blobDrift 21s ease-in-out infinite;
+  width: 280px;
+  height: 280px;
+  top: 38%;
+  left: 58%;
+  background: radial-gradient(circle, rgba(124, 77, 255, 0.5), transparent 70%);
+  animation: blobDrift 22s ease-in-out infinite;
 }
 
 @keyframes blobDrift {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  33%      { transform: translate(40px, -30px) scale(1.08); }
-  66%      { transform: translate(-30px, 25px) scale(0.94); }
+  33%      { transform: translate(42px, -28px) scale(1.08); }
+  66%      { transform: translate(-30px, 26px) scale(0.94); }
 }
 
 /* =====================
@@ -95,13 +97,13 @@
 
 .floater {
   position: absolute;
-  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-size: clamp(1.3rem, 3.2vw, 1.8rem);
   animation: floatBob ease-in-out infinite;
-  filter: drop-shadow(0 4px 8px rgba(107, 79, 143, 0.18));
-  opacity: 0.9;
+  filter: drop-shadow(0 0 10px rgba(243, 199, 95, 0.45));
+  opacity: 0.95;
 }
 
-/* 1=✨ 2=🌙 3=⭐ 4=🪁 5=🦚 6=💫 7=☁️ 8=🌸 */
+/* 1=✨ 2=🌙 3=⭐ 4=🪔 5=🦚 6=💫 7=🌟 8=🧿 */
 .fl1 { top: 8%;    left: 8%;   animation-duration: 5.4s; animation-delay: 0s;   }
 .fl2 { top: 12%;   right: 7%;  animation-duration: 6.8s; animation-delay: 1.2s; }
 .fl3 { top: 38%;   left: 3%;   animation-duration: 5.9s; animation-delay: 0.6s; }
@@ -123,11 +125,12 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 760px;
+  max-width: 700px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: clamp(20px, 4vw, 32px);
+  align-items: center;
+  gap: clamp(18px, 3.5vw, 28px);
 }
 
 /* =====================
@@ -143,10 +146,10 @@
 }
 
 .babyBadge {
-  font-size: clamp(2.6rem, 7vw, 3.6rem);
+  font-size: clamp(2.4rem, 6.5vw, 3.2rem);
   display: inline-block;
   animation: babyBounce 2.6s ease-in-out infinite;
-  filter: drop-shadow(0 6px 14px rgba(246, 166, 35, 0.35));
+  filter: drop-shadow(0 0 16px rgba(243, 199, 95, 0.5));
 }
 
 @keyframes babyBounce {
@@ -158,30 +161,32 @@
 .kicker {
   font-family: "Satisfy-Regular", cursive;
   font-size: clamp(1.1rem, 3vw, 1.5rem);
-  color: var(--ink-soft);
+  color: var(--lavender);
   margin-top: 6px;
 }
 
 .name {
-  font-size: clamp(3.2rem, 13vw, 6.5rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: 0.02em;
+  font-family: "Pacifico", "Satisfy-Regular", cursive;
+  font-size: clamp(3.4rem, 13vw, 6.8rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
   margin: 2px 0 0;
+  filter: drop-shadow(0 0 22px rgba(243, 199, 95, 0.35));
 }
 
 .nameLetter {
   display: inline-block;
-  background: linear-gradient(120deg, var(--gold), var(--coral) 45%, var(--plum));
+  background: linear-gradient(120deg, #ffe9a8, var(--gold) 40%, var(--gold-deep) 70%, var(--rose-gold));
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  padding: 0 0.02em;
   animation:
     letterPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both,
-    shimmer 6s ease-in-out 1.2s infinite;
-  text-shadow: none;
+    shimmer 5s ease-in-out 1.2s infinite;
 }
 
 @keyframes letterPop {
@@ -196,21 +201,23 @@
 }
 
 .devanagari {
-  font-size: clamp(1.4rem, 4vw, 2rem);
-  color: var(--plum);
-  margin-top: 6px;
+  font-size: clamp(1.3rem, 3.6vw, 1.8rem);
+  color: var(--gold);
+  margin-top: 4px;
+  letter-spacing: 0.06em;
   animation: fadeIn 0.8s ease 1s both;
 }
 
 .tagline {
-  font-size: clamp(0.9rem, 2.4vw, 1.05rem);
-  color: var(--ink-soft);
+  font-size: clamp(0.88rem, 2.3vw, 1rem);
+  color: var(--lavender);
+  letter-spacing: 0.08em;
   margin-top: 8px;
   animation: fadeIn 0.8s ease 1.15s both;
 }
 
 .tagline em {
-  color: var(--coral);
+  color: var(--gold);
   font-weight: 700;
   font-style: normal;
 }
@@ -226,42 +233,47 @@
 .meanings {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(12px, 2.5vw, 20px);
+  gap: 12px;
+  width: 100%;
+  max-width: 640px;
 }
 
 .meaningCard {
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  border-radius: 22px;
-  padding: clamp(16px, 3vw, 24px) clamp(12px, 2.5vw, 18px);
-  box-shadow: 0 10px 26px rgba(107, 79, 143, 0.12);
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 16px 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   animation: riseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
 .meaningCard:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 16px 34px rgba(107, 79, 143, 0.2);
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .meaningEmoji {
-  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
   display: inline-block;
+  filter: drop-shadow(0 0 8px rgba(243, 199, 95, 0.4));
   animation: floatBob 4.5s ease-in-out infinite;
 }
 
 .meaningTitle {
-  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
   font-weight: 700;
-  color: var(--plum);
+  color: var(--gold);
+  letter-spacing: 0.03em;
   margin-top: 8px;
 }
 
 .meaningText {
-  font-size: clamp(0.78rem, 2vw, 0.9rem);
-  line-height: 1.55;
-  color: var(--ink-soft);
+  font-size: clamp(0.74rem, 1.9vw, 0.82rem);
+  line-height: 1.5;
+  color: var(--lavender);
   margin-top: 6px;
 }
 
@@ -269,19 +281,21 @@
    Age counter card
    ===================== */
 .timerCard {
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  border-radius: 26px;
-  padding: clamp(18px, 3.5vw, 28px);
-  box-shadow: 0 12px 30px rgba(107, 79, 143, 0.14);
+  background: var(--card-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: clamp(16px, 3vw, 24px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  width: 100%;
+  max-width: 640px;
   animation: riseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 1.5s both;
 }
 
 .timerHeading {
   font-family: "Satisfy-Regular", cursive;
-  font-size: clamp(1.2rem, 3.4vw, 1.7rem);
-  color: var(--plum);
+  font-size: clamp(1.2rem, 3.4vw, 1.6rem);
+  color: var(--gold);
   margin-bottom: 14px;
 }
 
@@ -289,16 +303,16 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: clamp(8px, 1.8vw, 14px);
+  gap: clamp(8px, 1.8vw, 12px);
 }
 
 .timerBox {
-  background: linear-gradient(160deg, #ffffff, #fff1e2);
-  border-radius: 16px;
-  padding: 12px 10px 9px;
-  min-width: 62px;
-  box-shadow: 0 6px 16px rgba(246, 166, 35, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  background: rgba(23, 16, 54, 0.55);
+  border: 1px solid rgba(243, 199, 95, 0.25);
+  border-radius: 12px;
+  padding: 11px 10px 8px;
+  min-width: 60px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
   /* fires on mount — seconds box remounts every tick via key change */
   animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
@@ -309,10 +323,10 @@
 }
 
 .timerVal {
-  font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+  font-size: clamp(1.4rem, 4.2vw, 2rem);
   font-weight: 800;
   line-height: 1;
-  background: linear-gradient(120deg, var(--gold), var(--coral));
+  background: linear-gradient(120deg, #ffe9a8, var(--gold), var(--gold-deep));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -320,27 +334,27 @@
 }
 
 .timerLabel {
-  font-size: 0.62rem;
-  color: var(--ink-soft);
+  font-size: 0.6rem;
+  color: var(--lavender);
   margin-top: 5px;
   text-transform: uppercase;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.8px;
 }
 
 /* =====================
    Parents footer
    ===================== */
 .parents {
-  font-size: clamp(0.88rem, 2.3vw, 1rem);
-  color: var(--ink-soft);
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+  color: var(--lavender);
   line-height: 1.7;
   animation: fadeIn 0.8s ease 1.9s both;
 }
 
 .parentNames {
   font-family: "Satisfy-Regular", cursive;
-  font-size: clamp(1.15rem, 3vw, 1.45rem);
-  color: var(--coral);
+  font-size: clamp(1.15rem, 3vw, 1.4rem);
+  color: var(--gold);
 }
 
 /* =====================
@@ -349,13 +363,17 @@
 @media (max-width: 640px) {
   .meanings {
     grid-template-columns: 1fr;
+    max-width: 380px;
+  }
+  .meaningCard {
+    padding: 13px 14px;
   }
   .floater {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
   }
   .timerBox {
-    min-width: 52px;
-    padding: 10px 8px 7px;
+    min-width: 50px;
+    padding: 9px 8px 7px;
   }
 }
 

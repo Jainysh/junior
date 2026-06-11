@@ -46,7 +46,7 @@ function AgeTimer({ dueDate }: { dueDate: Date }) {
 // ── Page data ───────────────────────────────────────────────────────────────
 const NAME_LETTERS = ["D", "a", "r", "s", "h"];
 
-const FLOATERS = ["✨", "🌙", "⭐", "🪁", "🦚", "💫", "☁️", "🌸"];
+const FLOATERS = ["✨", "🌙", "⭐", "🪔", "🦚", "💫", "🌟", "🧿"];
 
 const MEANINGS = [
   {
