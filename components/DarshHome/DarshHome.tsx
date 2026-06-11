@@ -50,19 +50,19 @@ const FLOATERS = ["✨", "🌙", "⭐", "🪁", "🦚", "💫", "☁️", "🌸"
 
 const MEANINGS = [
   {
-    emoji: “👁️”,
-    title: “Vision · Auspicious Sight”,
-    text: “Darsh means vision and auspicious sight — a beautiful, blessed view that fills the heart with wonder.”,
+    emoji: "👁️",
+    title: "Vision · Auspicious Sight",
+    text: "Darsh means vision and auspicious sight — a beautiful, blessed view that fills the heart with wonder.",
   },
   {
-    emoji: “🦚”,
-    title: “One Who Has Vision”,
-    text: “Darsh is the wise observer — one who sees beyond the ordinary and perceives the world with clarity and grace.”,
+    emoji: "🦚",
+    title: "One Who Has Vision",
+    text: "Darsh is the wise observer — one who sees beyond the ordinary and perceives the world with clarity and grace.",
   },
   {
-    emoji: “🌑”,
-    title: “A name of Lord Krishna”,
-    text: “Darsh is one of the cherished names of Lord Krishna — the one who is a delight to behold.”,
+    emoji: "🌑",
+    title: "A name of Lord Krishna",
+    text: "Darsh is one of the cherished names of Lord Krishna — the one who is a delight to behold.",
   },
 ];
 
