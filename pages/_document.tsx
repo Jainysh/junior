@@ -15,6 +15,16 @@ export default function Document() {
 							);`,
           }}
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+          rel="stylesheet"
+        />
         <title>Welcome to Darsh&apos;s Garage</title>
         <meta property="og:title" content="Welcome to Darsh's Garage" />
         <meta property="og:description" content="Suggest and vote for baby names, and watch the countdown to our little engineer's arrival!" />
