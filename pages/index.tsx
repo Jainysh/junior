@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { GetServerSideProps } from "next";
 import styles from "../styles/Home.module.css";
 import CountdownTimer from "@/components/Countdown/countdown";
 import DarshHome from "@/components/DarshHome/DarshHome";
@@ -8,17 +9,12 @@ const SON_DATE = new Date("2026-05-14T10:58:00");
 
 const DARSH_SUBDOMAINS = ["junior", "darsh", "localhost"];
 
-const HomePage = () => {
-  const [dueDate, setDueDate] = useState(DAUGHTER_DATE);
-  const [isDarsh, setIsDarsh] = useState(false);
+interface HomePageProps {
+  isDarsh: boolean;
+}
 
-  useEffect(() => {
-    const subdomain = window.location.hostname.split(".")[0].toLowerCase();
-    if (DARSH_SUBDOMAINS.includes(subdomain)) {
-      setIsDarsh(true);
-      setDueDate(SON_DATE);
-    }
-  }, []);
+const HomePage = ({ isDarsh }: HomePageProps) => {
+  const dueDate = isDarsh ? SON_DATE : DAUGHTER_DATE;
 
   if (isDarsh) {
     return <DarshHome dueDate={dueDate} />;
@@ -47,6 +43,14 @@ const HomePage = () => {
       </div>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const host = context.req.headers.host ?? "";
+  const subdomain = host.split(":")[0].split(".")[0].toLowerCase();
+  const isDarsh = DARSH_SUBDOMAINS.includes(subdomain);
+
+  return { props: { isDarsh } };
 };
 
 export default HomePage;
