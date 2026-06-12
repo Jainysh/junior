@@ -6,7 +6,7 @@ import DarshHome from "@/components/DarshHome/DarshHome";
 const DAUGHTER_DATE = new Date("July 11, 2023 04:37:00");
 const SON_DATE = new Date("2026-05-14T10:58:00");
 
-const DARSH_SUBDOMAINS = ["junior", "darsh"];
+const DARSH_SUBDOMAINS = ["junior", "darsh", "localhost"];
 
 const HomePage = () => {
   const [dueDate, setDueDate] = useState(DAUGHTER_DATE);

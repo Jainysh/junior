@@ -26,8 +26,8 @@ export default function Document() {
           rel="stylesheet"
         />
         <title>Welcome to Darsh&apos;s Garage</title>
-        <meta property="og:title" content="Welcome to Darsh's Garage" />
-        <meta property="og:description" content="Suggest and vote for baby names, and watch the countdown to our little engineer's arrival!" />
+        <meta property="og:title" content="Welcome to Darsh's Space" />
+        {/* <meta property="og:description" content="" /> */}
         <meta property="og:type" content="website" />
       </Head>
       <body>

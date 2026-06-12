@@ -1,121 +1,31 @@
 /* =====================
-   Theme variables
+   Paper + Ballpoint Pen Theme
    ===================== */
 .wrapper {
-  --night-1: #171036;
-  --night-2: #2b1a52;
-  --night-3: #3a1f63;
-  --night-4: #1b1f52;
-  --gold: #f3c75f;
-  --gold-deep: #d99a2b;
-  --rose-gold: #f0a47e;
-  --peacock: #2fc4ae;
-  --ivory: #f7efdb;
-  --lavender: #cfc4e8;
-  --card-bg: rgba(255, 255, 255, 0.06);
-  --card-border: rgba(243, 199, 95, 0.4);
+  --paper: #faf8f2;
+  --ink-blue: #1a3d8f;
+  --ink-blue-dark: #0e2560;
+  --ink-black: #1c1c2a;
+  --ink-red: #b52d2d;
+  --ink-gray: #6b6478;
+  --line-color: rgba(160, 145, 120, 0.22);
 
   position: relative;
   min-height: 100vh;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: clamp(24px, 5vw, 56px) 16px;
-  color: var(--ivory);
-  font-family: sans-serif;
+  color: var(--ink-black);
+  font-family: "Georgia", "Times New Roman", serif;
 
-  background: linear-gradient(135deg, var(--night-1), var(--night-2), var(--night-3), var(--night-4));
-  background-size: 300% 300%;
-  animation: gradientDrift 20s ease-in-out infinite;
-  /* covers gradient from _app.tsx */
-  z-index: 0;
-}
-
-@keyframes gradientDrift {
-  0%, 100% { background-position: 0% 40%; }
-  50%      { background-position: 100% 60%; }
-}
-
-/* =====================
-   Glow blobs (background)
-   ===================== */
-.bgLayer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.4;
-}
-
-.blob1 {
-  width: 380px;
-  height: 380px;
-  top: -130px;
-  left: -110px;
-  background: radial-gradient(circle, rgba(243, 199, 95, 0.55), transparent 70%);
-  animation: blobDrift 15s ease-in-out infinite;
-}
-
-.blob2 {
-  width: 340px;
-  height: 340px;
-  bottom: -110px;
-  right: -90px;
-  background: radial-gradient(circle, rgba(47, 196, 174, 0.45), transparent 70%);
-  animation: blobDrift 18s ease-in-out infinite reverse;
-}
-
-.blob3 {
-  width: 280px;
-  height: 280px;
-  top: 38%;
-  left: 58%;
-  background: radial-gradient(circle, rgba(124, 77, 255, 0.5), transparent 70%);
-  animation: blobDrift 22s ease-in-out infinite;
-}
-
-@keyframes blobDrift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%      { transform: translate(42px, -28px) scale(1.08); }
-  66%      { transform: translate(-30px, 26px) scale(0.94); }
-}
-
-/* =====================
-   Floating sparkles
-   ===================== */
-.floatLayer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.floater {
-  position: absolute;
-  font-size: clamp(1.3rem, 3.2vw, 1.8rem);
-  animation: floatBob ease-in-out infinite;
-  filter: drop-shadow(0 0 10px rgba(243, 199, 95, 0.45));
-  opacity: 0.95;
-}
-
-/* 1=✨ 2=🌙 3=⭐ 4=🪔 5=🦚 6=💫 7=🌟 8=🧿 */
-.fl1 { top: 8%;    left: 8%;   animation-duration: 5.4s; animation-delay: 0s;   }
-.fl2 { top: 12%;   right: 7%;  animation-duration: 6.8s; animation-delay: 1.2s; }
-.fl3 { top: 38%;   left: 3%;   animation-duration: 5.9s; animation-delay: 0.6s; }
-.fl4 { top: 30%;   right: 4%;  animation-duration: 7.4s; animation-delay: 2.1s; }
-.fl5 { bottom: 26%; left: 6%;  animation-duration: 6.2s; animation-delay: 1.6s; }
-.fl6 { bottom: 32%; right: 8%; animation-duration: 5.1s; animation-delay: 0.3s; }
-.fl7 { bottom: 8%;  left: 14%; animation-duration: 7.9s; animation-delay: 2.6s; }
-.fl8 { bottom: 10%; right: 16%; animation-duration: 6.5s; animation-delay: 0.9s; }
-
-@keyframes floatBob {
-  0%, 100% { transform: translateY(0)      rotate(-6deg); }
-  50%      { transform: translateY(-16px)  rotate(6deg);  }
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    var(--line-color) 27px,
+    var(--line-color) 28px
+  );
 }
 
 /* =====================
@@ -123,14 +33,14 @@
    ===================== */
 .content {
   position: relative;
-  z-index: 10;
+  z-index: 1;
   width: 100%;
-  max-width: 700px;
+  max-width: 680px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(18px, 3.5vw, 28px);
+  gap: clamp(24px, 4vw, 36px);
 }
 
 /* =====================
@@ -141,162 +51,138 @@
 }
 
 @keyframes riseIn {
-  from { opacity: 0; transform: translateY(26px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .babyBadge {
   font-size: clamp(2.4rem, 6.5vw, 3.2rem);
   display: inline-block;
   animation: babyBounce 2.6s ease-in-out infinite;
-  filter: drop-shadow(0 0 16px rgba(243, 199, 95, 0.5));
 }
 
 @keyframes babyBounce {
-  0%, 100% { transform: translateY(0)     rotate(-4deg) scale(1); }
-  40%      { transform: translateY(-12px) rotate(4deg)  scale(1.06); }
-  60%      { transform: translateY(-7px)  rotate(2deg)  scale(1.03); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg) scale(1);
+  }
+  40% {
+    transform: translateY(-12px) rotate(4deg) scale(1.06);
+  }
+  60% {
+    transform: translateY(-7px) rotate(2deg) scale(1.03);
+  }
 }
 
 .kicker {
   font-family: "Satisfy-Regular", cursive;
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-  color: var(--lavender);
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  color: var(--ink-gray);
   margin-top: 6px;
+  font-style: italic;
 }
 
 .name {
-  font-family: "Pacifico", "Satisfy-Regular", cursive;
+  font-family: "Pacifico", cursive;
   font-size: clamp(3.4rem, 13vw, 6.8rem);
   font-weight: 400;
   line-height: 1.3;
   letter-spacing: 0.01em;
   margin: 2px 0 0;
-  filter: drop-shadow(0 0 22px rgba(243, 199, 95, 0.35));
 }
 
 .nameLetter {
   display: inline-block;
-  background: linear-gradient(120deg, #ffe9a8, var(--gold) 40%, var(--gold-deep) 70%, var(--rose-gold));
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: var(--ink-blue);
   padding: 0 0.02em;
-  animation:
-    letterPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both,
-    shimmer 5s ease-in-out 1.2s infinite;
+  animation: letterPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 @keyframes letterPop {
-  0%   { opacity: 0; transform: translateY(34px) scale(0.6) rotate(-8deg); }
-  70%  { opacity: 1; transform: translateY(-6px) scale(1.08) rotate(2deg); }
-  100% { opacity: 1; transform: translateY(0)    scale(1)    rotate(0); }
-}
-
-@keyframes shimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50%      { background-position: 100% 50%; }
+  0% {
+    opacity: 0;
+    transform: translateY(34px) scale(0.6) rotate(-8deg);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.08) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
 }
 
 .devanagari {
-  font-size: clamp(1.3rem, 3.6vw, 1.8rem);
-  color: var(--gold);
+  font-size: clamp(1.5rem, 3.6vw, 1.8rem);
+  font-weight: 500;
+  color: var(--ink-red);
   margin-top: 4px;
   letter-spacing: 0.06em;
   animation: fadeIn 0.8s ease 1s both;
 }
 
-.tagline {
+/* Dictionary entry line */
+.meaningLine {
   font-size: clamp(0.88rem, 2.3vw, 1rem);
-  color: var(--lavender);
-  letter-spacing: 0.08em;
-  margin-top: 8px;
+  color: var(--ink-black);
+  line-height: 1.65;
+  margin-top: 14px;
+  padding: 9px 18px;
+  border-top: 1.5px solid var(--ink-blue);
+  border-bottom: 1.5px solid var(--ink-blue);
+  max-width: 520px;
+  text-align: left;
   animation: fadeIn 0.8s ease 1.15s both;
-}
-
-.tagline em {
-  color: var(--gold);
-  font-weight: 700;
   font-style: normal;
 }
 
+.dictWord {
+  font-style: italic;
+  font-weight: bold;
+  color: var(--ink-blue-dark);
+  font-size: 1.08em;
+}
+
+.dictPos {
+  font-style: italic;
+  color: var(--ink-gray);
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-/* =====================
-   Meaning cards
-   ===================== */
-.meanings {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  width: 100%;
-  max-width: 640px;
-}
-
-.meaningCard {
-  background: var(--card-bg);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--card-border);
-  border-radius: 14px;
-  padding: 16px 14px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-  animation: riseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
-  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-}
-
-.meaningCard:hover {
-  transform: translateY(-5px);
-  border-color: var(--gold);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.meaningEmoji {
-  font-size: clamp(1.5rem, 4vw, 1.9rem);
-  display: inline-block;
-  filter: drop-shadow(0 0 8px rgba(243, 199, 95, 0.4));
-  animation: floatBob 4.5s ease-in-out infinite;
-}
-
-.meaningTitle {
-  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
-  font-weight: 700;
-  color: var(--gold);
-  letter-spacing: 0.03em;
-  margin-top: 8px;
-}
-
-.meaningText {
-  font-size: clamp(0.74rem, 1.9vw, 0.82rem);
-  line-height: 1.5;
-  color: var(--lavender);
-  margin-top: 6px;
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* =====================
    Age counter card
    ===================== */
 .timerCard {
-  background: var(--card-bg);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--card-border);
-  border-radius: 18px;
+  border: 1.5px solid var(--ink-blue);
+  border-radius: 3px;
   padding: clamp(16px, 3vw, 24px);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
   width: 100%;
   max-width: 640px;
+  background: rgba(250, 248, 242, 0.9);
   animation: riseIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 1.5s both;
 }
 
 .timerHeading {
   font-family: "Satisfy-Regular", cursive;
-  font-size: clamp(1.2rem, 3.4vw, 1.6rem);
-  color: var(--gold);
+  font-size: clamp(1.2rem, 3.2vw, 1.5rem);
+  color: var(--ink-black);
   margin-bottom: 14px;
+  font-style: italic;
 }
 
 .timerDisplay {
@@ -307,38 +193,41 @@
 }
 
 .timerBox {
-  background: rgba(23, 16, 54, 0.55);
-  border: 1px solid rgba(243, 199, 95, 0.25);
-  border-radius: 12px;
+  border: 1.5px solid var(--ink-blue);
+  border-radius: 2px;
   padding: 11px 10px 8px;
   min-width: 60px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  /* fires on mount — seconds box remounts every tick via key change */
+  background: white;
   animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 @keyframes popIn {
-  from { transform: scale(0.86); opacity: 0.6; }
-  to   { transform: scale(1);    opacity: 1; }
+  from {
+    transform: scale(0.86);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .timerVal {
   font-size: clamp(1.4rem, 4.2vw, 2rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
-  background: linear-gradient(120deg, #ffe9a8, var(--gold), var(--gold-deep));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: var(--ink-blue);
+  font-family: "Courier New", "Courier", monospace;
 }
 
 .timerLabel {
-  font-size: 0.6rem;
-  color: var(--lavender);
+  font-size: 0.7rem;
+  color: var(--ink-gray);
   margin-top: 5px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: lowercase;
 }
 
 /* =====================
@@ -346,7 +235,7 @@
    ===================== */
 .parents {
   font-size: clamp(0.85rem, 2.2vw, 0.95rem);
-  color: var(--lavender);
+  color: var(--ink-gray);
   line-height: 1.7;
   animation: fadeIn 0.8s ease 1.9s both;
 }
@@ -354,26 +243,20 @@
 .parentNames {
   font-family: "Satisfy-Regular", cursive;
   font-size: clamp(1.15rem, 3vw, 1.4rem);
-  color: var(--gold);
+  color: var(--ink-red);
 }
 
 /* =====================
    Responsive
    ===================== */
 @media (max-width: 640px) {
-  .meanings {
-    grid-template-columns: 1fr;
-    max-width: 380px;
-  }
-  .meaningCard {
-    padding: 13px 14px;
-  }
-  .floater {
-    font-size: 1.15rem;
-  }
   .timerBox {
     min-width: 50px;
     padding: 9px 8px 7px;
+  }
+  .meaningLine {
+    font-size: 0.85rem;
+    padding: 8px 12px;
   }
 }
 
@@ -381,12 +264,8 @@
    Reduced motion
    ===================== */
 @media (prefers-reduced-motion: reduce) {
-  .wrapper,
-  .blob,
-  .floater,
   .babyBadge,
   .nameLetter,
-  .meaningEmoji,
   .timerBox {
     animation-duration: 0.01s;
     animation-iteration-count: 1;
